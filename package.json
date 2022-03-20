@@ -1,0 +1,31 @@
+{
+  "name": "smartedu",
+  "version": "1.0.0",
+  "description": "Education portal",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeynebesra/NodeJS-SmartEDU.git"
+  },
+  "keywords": [
+    "education",
+    "portal",
+    "node.js"
+  ],
+  "author": "zey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeynebesra/NodeJS-SmartEDU/issues"
+  },
+  "homepage": "https://github.com/zeynebesra/NodeJS-SmartEDU#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
