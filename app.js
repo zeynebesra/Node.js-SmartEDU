@@ -11,7 +11,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     //useFindAndModify: false,
-    useCreateIndex: true,
+    //useCreateIndex: true,
   })
   .then(() => {
     console.log('DB Connected Successfuly');
@@ -22,7 +22,8 @@ app.set('view engine', 'ejs');
 
 //MIDDLEWARES
 app.use(express.static('public')); //static dosyaları
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 //ROUTES
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);
