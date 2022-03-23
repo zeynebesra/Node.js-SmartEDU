@@ -18,6 +18,13 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-9 blog-post-single">
+        <!-- flashMessages -->
+        <% if (flashMessages) { %> <% if (flashMessages.success) { %>
+        <div class="alert alert-success"><%= flashMessages.success %></div>
+        <% } else if (flashMessages.error) { %>
+        <div class="alert alert-danger"><%= flashMessages.error %></div>
+        <% } %> <% } %>
+        <!-- flashMessages -->
         <div class="row">
           <% for (let i=0; i< courses.length; i++) { %>
 
@@ -41,8 +48,8 @@
               <div class="course-meta-bot">
                 <ul>
                   <li>
-                    <i class="fa fa-user" aria-hidden="true"></i><%=
-                    courses[i].user.name %>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <%= courses[i].user.name %>
                   </li>
                 </ul>
               </div>

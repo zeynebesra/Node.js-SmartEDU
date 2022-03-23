@@ -33,11 +33,29 @@ const UserSchema = new Schema({
 // bcrypt
 // modelimizde password alanını şifreleyip "hash" e çeviriyoruz
 //ve veritabanımına şifrelenmiş şekilde kaydediyoruz.
+
+// UserSchema.pre('save', function (next) {
+//   const user = this;
+//   bcrypt.hash(user.password, 10, (error, hash) => {
+//     user.password = hash;
+//     next();
+//   });
+// });
+
+//stackoverflow
+//How to prevent Mongoose from rehashing the user passwords after modifying a user?
+
 UserSchema.pre('save', function (next) {
   const user = this;
-  bcrypt.hash(user.password, 10, (error, hash) => {
-    user.password = hash;
-    next();
+  if (!user.isModified('password')) return next();
+
+  bcrypt.genSalt(10, function (err, salt) {
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, function (err, hash) {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
   });
 });
 
